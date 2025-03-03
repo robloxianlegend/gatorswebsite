@@ -139,7 +139,7 @@
             let statusElement = document.getElementById("status");
             let schoolStatus = `currently at school <span class='dot ${hour >= 6 && hour < 14 ? 'active' : 'inactive'}'>●</span>`;
             let homeStatus = `currently at home <span class='dot ${hour >= 14 || hour < 6 ? 'active' : 'inactive'}'>●</span>`;
-            let notAtHomeYetStatus = `currently going home <span class='dot ${(hour === 14 && minute >= 10 && minute <= 15) ? 'active' : 'inactive'}'>●</span>`;
+            let notAtHomeYetStatus = `currently walking home <span class='dot ${(hour === 14 && minute >= 10 && minute <= 15) ? 'active' : 'inactive'}'>●</span>`;
             
             let statusHTML = `${homeStatus}<br>${schoolStatus}<br>${notAtHomeYetStatus}`;
             statusElement.innerHTML = statusHTML;
