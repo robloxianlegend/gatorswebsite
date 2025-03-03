@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const userId = params.get("id") || "1";
-        document.write(`
-            <meta property="og:title" content="@gatorkeys">
-            <meta property="og:description" content="https://phans.bio/@${userId}">
-            <meta property="og:url" content="https://phans.bio/@${userId}">
-            <meta property="og:type" content="website">
-            <meta property="og:image" content="https://phans.bio/api/v1/og/${userId}?size=1024">
-            <meta property="og:image:width" content="1024">
-            <meta property="og:image:height" content="1024">
-            <meta name="theme-color" content="#2b2d31">
-        `);
-        location.href = `https://phans.bio/@${userId}`;
-    </script>
+    <meta property="og:title" content="@gatorkeys">
+    <meta property="og:description" content="https://phans.bio/@1">
+    <meta property="og:url" content="https://phans.bio/@1">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://phans.bio/api/v1/og/1?size=1024"> 
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta name="theme-color" content="#2b2d31">
+    <script>location.href="https://phans.bio/@1";</script>
 </head>
 <body>
 </body>
