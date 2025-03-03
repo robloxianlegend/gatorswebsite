@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>- i love lee hyeri</title>
+    <link rel="icon" href="meta.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="where is @gatorkeys?">
+    <meta property="og:description" content="this site tells you if gator is at school, home, what time it is for gator.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/your-image.png">
+    <meta property="og:url" content="https://example.com/your-page">
+    <meta name="theme-color" content="#2b2d31">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            text-align: center;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'Rubik', sans-serif;
+            user-select: none;
+            position: relative;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .reveal-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .time {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 400;
+            font-size: 20px;
+            color: #FFFFFF;
+            opacity: 0.8;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .status {
+            font-weight: 400;
+            font-size: 20px;
+            color: #FFFFFF;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 48px;
+            color: #FFFFFF;
+            text-transform: lowercase;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .dot {
+            font-size: 20px;
+            margin-left: 5px;
+        }
+
+        .active {
+            color: #00ff15;
+        }
+
+        .inactive {
+            color: #acacac94;
+        }
+    </style>
+</head>
+<body>
+    <video class="background-video" id="background-video" src="video/video.mp4" muted loop></video>
+    <div class="reveal-screen" id="reveal-screen">2/2 assets loaded</div>
+    
+    <div class="time" id="time"></div>
+    
+    <div class="container">
+        <h1>@gatorkeys</h1>
+        <div class="status" id="status"></div>
+    </div>
+
+    <audio id="background-audio" src="songs/oof.mp3"></audio>
+
+    <script>
+        function updateTime() {
+            let now = new Date();
+            let options = { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit', hour12: true };
+            let timeString = new Intl.DateTimeFormat('en-US', options).format(now);
+            document.getElementById("time").textContent = timeString;
+            
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            if (hour >= 15 && hour < 20) {
+                document.getElementById("time").style.color = "#00ff15";
+            } else {
+                document.getElementById("time").style.color = "#ff0000";
+            }
+            
+            updateLocationStatus(hour, minute);
+        }
+
+        function updateLocationStatus(hour, minute) {
+            let statusElement = document.getElementById("status");
+            let schoolStatus = `currently at school <span class='dot ${hour >= 6 && hour < 14 ? 'active' : 'inactive'}'>●</span>`;
+            let homeStatus = `currently at home <span class='dot ${hour >= 14 || hour < 6 ? 'active' : 'inactive'}'>●</span>`;
+            let notAtHomeYetStatus = `currently walking home <span class='dot ${(hour === 14 && minute >= 10 && minute <= 15) ? 'active' : 'inactive'}'>●</span>`;
+            
+            let statusHTML = `${homeStatus}<br>${schoolStatus}<br>${notAtHomeYetStatus}`;
+            statusElement.innerHTML = statusHTML;
+        }
+
+        document.getElementById("reveal-screen").addEventListener("click", function() {
+            this.style.display = "none";
+            let audio = document.getElementById("background-audio");
+            let video = document.getElementById("background-video");
+            audio.volume = 0.2;
+            audio.play().catch(error => console.log("Audio playback failed: ", error));
+            video.play().catch(error => console.log("Video playback failed: ", error));
+        });
+
+        updateTime();
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+</html>
