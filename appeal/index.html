@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gatorkeys.xyz | appeal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="meta.ico" type="image/x-icon">
+    <meta property="og:title" content="gatorkeys.xyz | appeal">
+    <meta property="og:description" content="Rest Community Appeal">
+    <meta property="og:color" content="#000000">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1345217902630142024/1346371563573743626/cfc384bc87b6ca993ee531b119baca11.jpg?ex=67c7f1bb&is=67c6a03b&hm=257bc48243da90b037cf2af10e7b4bdc6d2a999effa0349fabe9f4dc709b6d4b&">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border-color: #1e1e1e;
+            --accent-color: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 20px;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+            perspective: 1000px;
+        }
+        .webhook-container {
+            background-color: rgba(10,10,10,0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 50px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.2),
+                0 0 100px rgba(255,255,255,0.05);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .webhook-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #ffffff 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+            perspective: 1000px;
+        }
+        .webhook-input {
+            width: 100%;
+            padding: 18px 25px;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: var(--transition);
+            outline: none;
+            font-weight: 300;
+            caret-color: var(--text-secondary);
+            will-change: width, transform;
+        }
+        .webhook-input:focus {
+            border-color: var(--text-secondary);
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+        }
+        .webhook-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        .webhook-input:focus::placeholder {
+            opacity: 0.3;
+        }
+        .webhook-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .webhook-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
+        }
+        .webhook-button:hover::before {
+            left: 100%;
+        }
+        .webhook-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 22px rgba(255,255,255,0.15);
+        }
+        #status {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-secondary);
+            min-height: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="webhook-container" id="webhookContainer">
+        <h2 class="webhook-title">Rest Community Appeal</h2>
+        <div class="input-group" style="display:none;">
+            <input class="webhook-input" type="text" id="webhookUrl" value="https://discord.com/api/webhooks/1346394982369591316/ltpGMea3ZCgqq8xouEkZFkTKi_-6WBtRCgHYeQjLIXvm18ht4gYwIte1SMMfXfXgsexT" readonly>
+        </div>
+        <div class="input-group">
+            <input class="webhook-input" type="text" id="robloxUsername" placeholder="roblox username" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <input class="webhook-input" type="text" id="banReason" placeholder="ban reason" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <input class="webhook-input" type="text" id="appealMessage" placeholder="appeal message" autocomplete="off">
+        </div>
+        <button class="webhook-button" onclick="sendMessage()">submit</button>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        const container = document.getElementById('webhookContainer');
+        const robloxUsernameInput = document.getElementById('robloxUsername');
+        const banReasonInput = document.getElementById('banReason');
+        const appealMessageInput = document.getElementById('appealMessage');
+
+        function handleTilt(e) {
+            const { left, top, width, height } = container.getBoundingClientRect();
+            const centerX = left + width / 2;
+            const centerY = top + height / 2;
+            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const rotateX = (centerY - mouseY) / 20;
+            const rotateY = (mouseX - centerX) / 20;
+            
+            container.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        function resetTilt() {
+            container.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        }
+
+        container.addEventListener('mousemove', handleTilt);
+        container.addEventListener('mouseleave', resetTilt);
+
+        function setupSmoothTyping(input) {
+            let originalWidth = input.offsetWidth;
+            let tweenInstance = null;
+
+            input.addEventListener('input', function() {
+                // Cancel any ongoing tween
+                if (tweenInstance) {
+                    tweenInstance.kill();
+                }
+
+                // Calculate new width based on content
+                let contentLength = this.value.length;
+                let newWidth = Math.max(contentLength * 10 + 100, originalWidth);
+
+                // Smooth tween for width
+                tweenInstance = gsap.to(this, {
+                    width: newWidth,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            // Reset on blur
+            input.addEventListener('blur', function() {
+                if (tweenInstance) {
+                    tweenInstance.kill();
+                }
+                
+                gsap.to(this, {
+                    width: '100%',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        }
+
+        setupSmoothTyping(robloxUsernameInput);
+        setupSmoothTyping(banReasonInput);
+        setupSmoothTyping(appealMessageInput);
+
+    function sendMessage() {
+        const webhookUrl = "https://discord.com/api/webhooks/1346394982369591316/ltpGMea3ZCgqq8xouEkZFkTKi_-6WBtRCgHYeQjLIXvm18ht4gYwIte1SMMfXfXgsexT";
+        const robloxUsername = robloxUsernameInput.value.trim();
+        const banReason = banReasonInput.value.trim();
+        const appealMessage = appealMessageInput.value.trim();
+
+        if (!robloxUsername || !banReason || !appealMessage) {
+            document.getElementById('status').innerText = "please fill in all fields.";
+            return;
+        }
+
+        const lastSubmission = localStorage.getItem("lastSubmission");
+        const cooldown = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
+        const now = Date.now();
+
+        if (lastSubmission && now - lastSubmission < cooldown) {
+            document.getElementById('status').innerText = "You can only submit one appeal every 6 hours.";
+            return;
+        }
+
+        const payload = {
+            embeds: [{
+                description: `${robloxUsername}\n**-# ${banReason}**\n- ${appealMessage}`,
+                color: 0xffffff,
+                footer: { text: "sent via gatorkeys.xyz/appeal" }
+            }],
+            username: "appeal manager"
+        };
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) {
+                localStorage.setItem("lastSubmission", now);
+                document.getElementById('status').innerText = "sent successfully";
+                robloxUsernameInput.value = '';
+                banReasonInput.value = '';
+                appealMessageInput.value = '';
+                checkCooldown();
+            } else {
+                document.getElementById('status').innerText = "failed to send";
+            }
+        })
+        .catch(error => {
+            document.getElementById('status').innerText = "error: " + error.message;
+        });
+    }
+
+    function checkCooldown() {
+        const lastSubmission = localStorage.getItem("lastSubmission");
+        const cooldown = 6 * 60 * 60 * 1000;
+        const now = Date.now();
+        const button = document.querySelector(".webhook-button");
+
+        if (lastSubmission && now - lastSubmission < cooldown) {
+            button.disabled = true;
+            document.getElementById('status').innerText = "You can submit another appeal in " + 
+                Math.ceil((cooldown - (now - lastSubmission)) / (60 * 1000)) + " minutes.";
+        } else {
+            button.disabled = false;
+            document.getElementById('status').innerText = "";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", checkCooldown);
+</script>
+
+</body>
+</html>
