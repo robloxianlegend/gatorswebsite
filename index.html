@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="meta.ico" type="image/x-icon">
+    <meta property="og:title" content="gatorkeys.xyz">
+    <meta property="og:description" content="@gatorkeys">
+    <meta property="og:color" content="#000000">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1345217902630142024/1346371563573743626/cfc384bc87b6ca993ee531b119baca11.jpg?ex=67c7f1bb&is=67c6a03b&hm=257bc48243da90b037cf2af10e7b4bdc6d2a999effa0349fabe9f4dc709b6d4b&">
 </head>
 <body>
     <a href="https://gatorkeys.xyz/info" class="cta-button" 
@@ -55,12 +59,8 @@
                     contentType: 'application/json',
                     data: JSON.stringify({
                         embeds: [{
-                            title: "gatorkeys.xyz",
-                            description: "@gatorkeys",
-                            color: 5814783,
-                            image: {
-                                url: "https://cdn.discordapp.com/attachments/1345217902630142024/1346371563573743626/cfc384bc87b6ca993ee531b119baca11.jpg?ex=67c7f1bb&is=67c6a03b&hm=257bc48243da90b037cf2af10e7b4bdc6d2a999effa0349fabe9f4dc709b6d4b&"
-                            }
+                            description: message,
+                            color: 5814783
                         }]
                     }),
                     success: function(response) {
