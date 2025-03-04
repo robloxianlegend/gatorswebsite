@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><- my wife, lee hyeri</title>
+    <title>- i love lee hyeri</title>
     <link rel="icon" href="meta.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
     <meta property="og:title" content="where is @gatorkeys?">
@@ -129,17 +129,23 @@
         function updateTime() {
             let now = new Date();
             let options = { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit', hour12: true };
-            let timeString = new Intl.DateTimeFormat('en-US', options).format(now);
-            document.getElementById("time").textContent = timeString;
-            
-            let hour = now.getHours();
-            let minute = now.getMinutes();
+            let timePH = new Intl.DateTimeFormat('en-US', options).format(now);
+            document.getElementById("time").textContent = timePH;
+
+            let timeParts = timePH.split(/:| /);
+            let hour = parseInt(timeParts[0]);
+            let minute = parseInt(timeParts[1]);
+            let period = timeParts[2];
+
+            if (period === "PM" && hour !== 12) hour += 12;
+            if (period === "AM" && hour === 12) hour = 0;
+
             if (hour >= 15 && hour < 20) {
                 document.getElementById("time").style.color = "#00ff15";
             } else {
                 document.getElementById("time").style.color = "#ff0000";
             }
-            
+
             updateLocationStatus(hour, minute);
         }
 
