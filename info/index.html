@@ -9,8 +9,8 @@
     <meta property="og:title" content="where is @gatorkeys?">
     <meta property="og:description" content="this site tells you if gator is at school, home, what time it is for gator.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://example.com/your-image.png">
-    <meta property="og:url" content="https://example.com/your-page">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1345217902630142024/1346371563573743626/cfc384bc87b6ca993ee531b119baca11.jpg?ex=67c7f1bb&is=67c6a03b&hm=257bc48243da90b037cf2af10e7b4bdc6d2a999effa0349fabe9f4dc709b6d4b&">
+    <meta property="og:url" content="https://gatorkeys.xyz/info">
     <meta name="theme-color" content="#2b2d31">
     <style>
         body {
@@ -140,7 +140,7 @@
             if (period === "PM" && hour !== 12) hour += 12;
             if (period === "AM" && hour === 12) hour = 0;
 
-            if (hour >= 15 && hour < 20) {
+            if ((hour === 14 && minute >= 30) || (hour >= 15 && hour < 20)) {
                 document.getElementById("time").style.color = "#00ff15";
             } else {
                 document.getElementById("time").style.color = "#ff0000";
@@ -150,20 +150,19 @@
         }
 
         function updateLocationStatus(hour, minute) {
-    let statusElement = document.getElementById("status");
+            let statusElement = document.getElementById("status");
 
-    let walkingHome = (hour === 14 && minute >= 10 && minute <= 15);
-    let atSchool = hour >= 6 && hour < 14;
-    let atHome = (hour >= 14 || hour < 6) && !walkingHome;
+            let walkingHome = (hour === 14 && minute >= 10 && minute <= 15);
+            let atSchool = hour >= 6 && hour < 14;
+            let atHome = (hour >= 14 || hour < 6) && !walkingHome;
 
-    let schoolStatus = `currently at school <span class='dot ${atSchool ? 'active' : 'inactive'}'>●</span>`;
-    let homeStatus = `currently at home <span class='dot ${atHome ? 'active' : 'inactive'}'>●</span>`;
-    let notAtHomeYetStatus = `currently walking home <span class='dot ${walkingHome ? 'active' : 'inactive'}'>●</span>`;
+            let schoolStatus = `currently at school <span class='dot ${atSchool ? 'active' : 'inactive'}'>●</span>`;
+            let homeStatus = `currently at home <span class='dot ${atHome ? 'active' : 'inactive'}'>●</span>`;
+            let notAtHomeYetStatus = `currently walking home <span class='dot ${walkingHome ? 'active' : 'inactive'}'>●</span>`;
 
-    let statusHTML = `${homeStatus}<br>${schoolStatus}<br>${notAtHomeYetStatus}`;
-    statusElement.innerHTML = statusHTML;
-}
-
+            let statusHTML = `${homeStatus}<br>${schoolStatus}<br>${notAtHomeYetStatus}`;
+            statusElement.innerHTML = statusHTML;
+        }
 
         document.getElementById("reveal-screen").addEventListener("click", function() {
             this.style.display = "none";
