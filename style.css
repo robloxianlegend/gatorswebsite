@@ -262,6 +262,28 @@ body.light-mode #dark-mode-toggle {
     background-color: #f44336; 
 }
 
+#reveal-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Rubik', sans-serif;
+    z-index: 2000;
+    transition: opacity 0.5s ease;
+}
+
+#volume-control {
+    display: none;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 12px; /* Width of the entire scrollbar */
