@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gatorkeys.xyz</title>
-
-    <meta property="og:title" content="gatorkeys.xyz">
-    <meta property="og:description" content="@gatorkeys">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1352197754620739608/1352826081857769523/gng.jpg?ex=67df6cf8&is=67de1b78&hm=485b085580f163ac87d6f9356442dce3ce3a16d2de51a06a20de2d1eade696f7&">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gatorkeys.xyz">
-
-    <link rel="icon" href="corrupt.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <title>Redirecting...</title>
     <script>
-        location.replace("https://phans.bio/@1");
+        (function() {
+            const path = window.location.pathname.substring(1);
+            if (path) {
+                window.location.href = `https://phans.bio/${path}`;
+            } else {
+                document.body.innerHTML = "<h1>Invalid URL</h1>";
+            }
+        })();
     </script>
 </head>
 <body>
+    <h1>Redirecting...</h1>
 </body>
 </html>
